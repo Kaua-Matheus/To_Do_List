@@ -1,2 +1,14 @@
+# API
 fastapi[standard]
 uv
+
+# DB
+SQLAlchemy
+asyncpg
+alembic
+#psycopg2-binary
+psycopg2
+
+# Environment
+python-dotenv
+pydantic-settings
