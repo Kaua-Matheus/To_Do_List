@@ -1,16 +1,12 @@
 from sqlalchemy import String, Integer
-
-from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
+
+from db.base import Base
 
 '''
 This file is the lowest layer in development, this class user is used to map in database how User entity will be formated.
 '''
-
-
-class Base(DeclarativeBase):
-    pass
 
 
 class User(Base):
