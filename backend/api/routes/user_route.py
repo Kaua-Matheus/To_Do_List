@@ -12,6 +12,8 @@ user_service = UserService()
 
 @router.post("/register", response_model=UserSchema)
 async def register_user(user_data: RegisterUserSchema, db_session: AsyncSession = Depends(get_db_session)):
+
+    print("Entrou no registro de usuário (route)")
     try:
         return await user_service.register_user(db_session, user_data)
     except Exception as e:
