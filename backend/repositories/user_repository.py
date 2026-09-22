@@ -11,7 +11,7 @@ class UserRepository:
             await db_session.commit()
             await db_session.refresh(new_user)
 
-            return new_user
+            return new_user.__dict__
 
         except Exception as e:
             await db_session.rollback()

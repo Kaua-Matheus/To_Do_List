@@ -1,3 +1,6 @@
+# OWN PACKAGES
+git+https://github.com/Kaua-Matheus/py_logger.git
+
 # API
 fastapi[standard]
 uv
