@@ -3,6 +3,8 @@ import sqlalchemy
 from sqlalchemy.ext.asyncio import AsyncSession
 from repositories.user_repository import UserRepository
 from schemas.user_schema import RegisterUserSchema
+from utils.logger import logger
+
 from typing import Optional
 
 class UserService:
@@ -15,11 +17,14 @@ class UserService:
         try:
             user_dict = user_data.model_dump(exclude_unset=True)
 
+            # Returned as a dict
             created_user = await self.repository.create_user(db_session, user_dict)
 
             if created_user:
-                # Exclude, only debug
-                print("User created..")
+
+                logger.log(f"Created user {created_user["email"]}", level="warn", detail=True)
+
+                return created_user
 
         except sqlalchemy.exc.IntegrityError as ie:
             raise ValueError("The email is already in use")
