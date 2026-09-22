@@ -2,6 +2,11 @@
 .venv/
 .env
 
+# Python
 *.pyc
+*.ini
+__init__.py
 
+# Python Packages
 __pycache__
+alembic
