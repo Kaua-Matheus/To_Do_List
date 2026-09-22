@@ -1,4 +1,4 @@
-from sqlalchemy import String
+from sqlalchemy import String, Integer
 
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
@@ -16,8 +16,8 @@ class Base(DeclarativeBase):
 class User(Base):
     __tablename__ = "user"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    email: Mapped[str] = mapped_column(String(30))
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    email: Mapped[str] = mapped_column(String(30), nullable=False)
 
     def __repr__(self):
         return f"User(id={self.id!r}, email={self.email!r})"
