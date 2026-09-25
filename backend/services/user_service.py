@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from repositories.user_repository import UserRepository
 from schemas.user_schema import RegisterUserSchema
 from utils.logger import logger
+from utils.encrypt import hash_password
 
 from typing import Optional
 
@@ -16,6 +17,8 @@ class UserService:
     async def register_user(self, db_session: AsyncSession, user_data: RegisterUserSchema):
         try:
             user_dict = user_data.model_dump(exclude_unset=True)
+
+            user_dict["password"] = hash_password(user_dict["password"])
 
             # Returned as a dict
             created_user = await self.repository.create_user(db_session, user_dict)

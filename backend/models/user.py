@@ -13,7 +13,8 @@ class User(Base):
     __tablename__ = "user"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    email: Mapped[str] = mapped_column(String(30), nullable=False)
+    email: Mapped[str] = mapped_column(String(100), nullable=False)
+    password: Mapped[str] = mapped_column(String(255), nullable=False)
 
     def __repr__(self):
-        return f"User(id={self.id!r}, email={self.email!r})"
+        return f"User(id={self.id!r}, email={self.email!r}, password={self.password!r})"
